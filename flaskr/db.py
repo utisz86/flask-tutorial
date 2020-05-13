@@ -12,7 +12,7 @@ def get_db():
         )
         g.db.row_factory = sqlite3.Row
 
-    return g.get_db
+    return g.db
 
 def close_db(e=None):
     db = g.pop('db', None)
@@ -40,6 +40,6 @@ def init_db_command():
 
 def init_db(app):
     app.teardown_appcontext(close_db)
-    app.cli.add_comand(init_db_command)
+    app.cli.add_command(init_db_command)
 
-    
+
