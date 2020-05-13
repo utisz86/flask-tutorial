@@ -36,3 +36,10 @@ def init_db_command():
     click.echo('Initialized the database.')
 
 
+# Register with the Application
+
+def init_db(app):
+    app.teardown_appcontext(close_db)
+    app.cli.add_comand(init_db_command)
+
+    
